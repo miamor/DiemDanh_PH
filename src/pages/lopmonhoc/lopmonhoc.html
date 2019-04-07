@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Lớp môn học sinh viên đăng ký
+      <div class="clearfix"></div>
+    </ion-title>
+
+    <!--<button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-toolbar no-border-top>
+            <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateList()" placeholder="Bạn muốn đi đâu?">
+            </ion-searchbar>
+        </ion-toolbar>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentFilter()">
+                <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+            </button>
+        </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="no-scroll">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list class="custom-tabs-content" #oneDataList [hidden]="shownData === 0">
+    <ion-item-sliding class="oneData-one ended_{{oneData.total_dd == oneData.TongSoBuoi}}"
+      *ngFor="let oneData of dataList" #slidingItem>
+      <button ion-item (click)="goToDetail(oneData)">
+        <div class="oneData-one-info">
+          <h3 class="oneData-title">
+            <span class="malh">{{oneData.MaLMH}}</span> {{oneData.TenMH}}
+          </h3>
+          <div class="more-info">
+            <div class="sotinchi">
+              <ion-icon name="information-circle-outline"></ion-icon> Số tín chỉ: {{oneData.SoTinChi}}
+            </div>
+            <div class="tongsobuoi">
+              <ion-icon name="calendar"></ion-icon> Tổng số buổi học: {{oneData.total_dd}}/{{oneData.TongSoBuoi}}
+            </div>
+            <div class="total_comat">
+              <ion-icon name="checkmark-circle-outline"></ion-icon> Có mặt: {{oneData.total_comat}}/{{oneData.total_dd}}
+              buổi
+            </div>
+            <div class="total_vp">
+              <ion-icon name="radio-button-off"></ion-icon> Vắng phép: {{oneData.total_vp}}/{{oneData.total_dd}} buổi
+            </div>
+            <div class="total_vkp">
+              <ion-icon name="radio-button-off"></ion-icon> Vắng không phép: {{oneData.total_vkp}}/{{oneData.total_dd}}
+              buổi
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!--<ion-item-options>
+                <button ion-button color="favorite" (click)="addFavorite(slidingItem, oneData)" *ngIf="segment === 'all'">
+                    Favorite
+                </button>
+                <button ion-button color="danger" (click)="removeFavorite(slidingItem, oneData, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+                    Remove
+                </button>
+            </ion-item-options>-->
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+
+  <ion-list-header [hidden]="shownData > 0">
+    No data found
+  </ion-list-header>
+
+
+</ion-content>

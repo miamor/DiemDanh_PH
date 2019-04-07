@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Thống kê</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="no-scroll">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <div class="total_lesson">
+    Tổng số lớp học tham gia: {{stat.total_lmh}}
+  </div>
+  <div class="total_lesson">
+    Tổng số buổi đã học: {{stat.total_lessons}}
+  </div>
+  <div class="total_comat">
+    Số buổi có mặt: {{stat.total_comat}}
+  </div>
+  <div class="total_vp">
+    Số buổi vắng phép: {{stat.total_vp}}
+  </div>
+  <div class="total_vkp">
+    Số buổi vắng không phép: {{stat.total_vkp}}
+  </div>
+</ion-content>
