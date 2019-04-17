@@ -5,12 +5,13 @@ import { AlertController, App, ItemSliding, List, ModalController, NavController
 import { AppData } from '../../providers/app-data';
 
 import { LopMonHocDetailPage } from '../lopmonhoc-detail/lopmonhoc-detail';
+import { LichHocDetailPage } from '../lichhoc-detail/lichhoc-detail'
 
 @Component({
-    selector: 'page-lopmonhoc',
-    templateUrl: 'lopmonhoc.html'
+    selector: 'page-lich',
+    templateUrl: 'lich.html'
 })
-export class LopMonHocPage {
+export class LichPage {
     selectedItem: any;
     icons: string[];
     items: Array<{ title: string, note: string, icon: string }>;
@@ -18,9 +19,26 @@ export class LopMonHocPage {
     shownData = 0;
     userID: any;
 
-    params = {
-        name: ''
+    tabID: string;
+    tabs = {
+        Mon: 'Mon',
+        Tue: 'Tue',
+        Wed: 'Wed',
+        Thu: 'Thu',
+        Fri: 'Fri',
+        Sat: 'Sat',
+        Sun: 'Sun'
     };
+    activated = {
+        Mon: 0,
+        Tue: 0,
+        Wed: 0,
+        Thu: 0,
+        Fri: 0,
+        Sat: 0,
+        Sun: 0
+    };
+
 
     daysName = {
         Mon: 'Thứ 2',
@@ -30,6 +48,10 @@ export class LopMonHocPage {
         Fri: 'Thứ 6',
         Sat: 'Thứ 7',
         Sun: 'Chủ nhật'
+    };
+
+    params = {
+        name: ''
     };
 
     constructor(
@@ -45,18 +67,29 @@ export class LopMonHocPage {
     ) {
         this.appData.getUserInfoPromise().then((data) => {
             this.userID = data['MaGV'];
+            console.log(this.userID);
+            this.updateList(this.userID);
         });
     }
 
     ionViewDidLoad() {
-        this.updateList();
+        //if (this.userID) {}
+
     }
 
-    updateList() {
+    changeTab(id) {
+        this.tabID = id;
+        for (var _i in this.tabs) {
+            if (_i == id) this.activated[_i] = 'active';
+            else this.activated[_i] = '';
+        }
+    }
+
+    updateList(userID) {
         // Close any open sliding items when the tour updates
         this.dataList && this.dataList.closeSlidingItems();
 
-        this.appData.listLopMonHocByUserID().subscribe((dataList: any) => {
+        this.appData.listLopMonHocByUserID_week(userID).subscribe((dataList: any) => {
             this.dataList = dataList;
             console.log(dataList);
             /*for (var tKey in dataList) {
@@ -64,11 +97,16 @@ export class LopMonHocPage {
             }*/
             this.shownData = dataList.length;
             //console.log(this.shownData);
+
+            var d = new Date();
+            var dayName = d.toString().split(' ')[0];
+            console.log(dayName);
+            this.changeTab(dayName);
         });
     }
 
     doRefresh(refresher: Refresher) {
-        this.appData.listLopMonHocByUserID().subscribe((dataList: any) => {
+        this.appData.listLopMonHocByUserID_week(this.userID).subscribe((dataList: any) => {
             this.dataList = dataList;
             /*for (var tKey in dataList) {
               this.shownData[tKey] = dataList[tKey].length;
@@ -112,10 +150,42 @@ export class LopMonHocPage {
         });*/
     }
 
+    ItiDetail(data: any) {
+        console.log('ItiDetail called ');
+
+        /*let modal = this.modalCtrl.create(ItineraryPage, { itinerary: this.dataInfo.itinerary, current: current_day });
+        modal.present();
+
+        modal.onWillDismiss((data?: any) => {
+            if (data) {
+                console.log(data);
+            }
+        });
+
+        modal.onDidDismiss((data?: any) => {
+            console.log(data);
+            if (data && data != undefined) {
+                this.navCtrl.push(TripMyDetailPage, { tripId: data.id, tripInfo: data, name: data.title });
+            }
+        });*/
+
+        this.appData.loadSinhVienLMH(data.MaLMH).subscribe((dataList: any) => {
+            console.log(dataList);
+
+            this.navCtrl.push(LichHocDetailPage, {
+                MaLichHoc: data.MaLichHoc,
+                dataInfo: data,
+                lopInfo: { /*TenLop: data.TenLop, NienKhoa: data.NienKhoa,*/ sinhvien: dataList },
+                title: '[' + data.MaLMH + '] ' + data.Ngay
+            });
+        });
+
+    }
+
     goToDetail(oneData: any) {
         // go to the tour detail page
         // and pass in the tour data
 
-        this.navCtrl.push(LopMonHocDetailPage, { MaLMH: oneData.MaLMH, dataInfo: oneData, title: '['+oneData.MaLMH+'] '+oneData.TenMH });
+        this.navCtrl.push(LopMonHocDetailPage, { MaLMH: oneData.MaLMH, dataInfo: oneData, title: '[' + oneData.MaLMH + '] ' + oneData.TenMH });
     }
 }

@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { StatPage } from '../pages/stat/stat';
 //import { LopMonHocDetailPage } from '../pages/lopmonhoc-detail/lopmonhoc-detail';
 import { AppData } from '../providers/app-data';
+import { LichPage } from '../pages/lich/lich';
 
 export interface PageInterface {
     title: string;
@@ -42,6 +43,7 @@ export class MyApp {
     ];
     loggedInPages: PageInterface[] = [
         { title: 'Lớp môn học', component: LopMonHocPage },
+        { title: 'Lịch học', component: LichPage },
         { title: 'Thống kê', component: StatPage },
         { title: 'Logout', component: HomePage, logsOut: true }
     ];

@@ -24,7 +24,7 @@
     <div *ngIf="tabID == 'overview'" #overview class="custom-tabs-content dataInfo-overview">
 
       <div class="dataInfo-overview-one">
-        <ion-icon name="information-circle-outline"></ion-icon> Số tín chỉ: {{dataInfo.SoTinChi}}
+        <ion-icon name="calendar"></ion-icon> Số tín chỉ: {{dataInfo.SoTinChi}}
       </div>
 
       <div class="dataInfo-overview-one">
@@ -36,6 +36,11 @@
       <!--<div class="dataInfo-overview-one">
         <ion-icon name="people"></ion-icon> Lớp: {{dataInfo.TenLop}} ({{dataInfo.NienKhoa}})
       </div>-->
+
+      <div class="dataInfo-overview-one">
+        <ion-icon name="calendar"></ion-icon> Lịch học: {{daysName[dataInfo.Thu]}} (từ tiết {{dataInfo.TietBD}} - {{dataInfo.TietKT}})
+      </div>
+
       <div class="dataInfo-overview-one" *ngIf="dataInfo.sv_total > 0">
         <ion-icon name="people"></ion-icon> Tổng số SV: {{dataInfo.sv_total}}
       </div>

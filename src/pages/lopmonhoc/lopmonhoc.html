@@ -42,8 +42,14 @@
           </h3>
           <div class="more-info">
             <div class="sotinchi">
-              <ion-icon name="information-circle-outline"></ion-icon> Số tín chỉ: {{oneData.SoTinChi}}
+              <ion-icon name="calendar"></ion-icon> Số tín chỉ: {{oneData.SoTinChi}}
             </div>
+
+            <div class="lichhoc">
+              <ion-icon name="calendar"></ion-icon> Lịch học: {{daysName[oneData.Thu]}} (từ tiết {{oneData.TietBD}} -
+              {{oneData.TietKT}})
+            </div>
+
             <div class="tongsobuoi">
               <ion-icon name="calendar"></ion-icon> Tổng số buổi học: {{oneData.total_dd}}/{{oneData.TongSoBuoi}}
             </div>
