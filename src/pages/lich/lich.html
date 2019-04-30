@@ -12,10 +12,10 @@
 
 </ion-header>
 
-<ion-content class="no-scroll">
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+<ion-content class="">
+  <!--<ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  </ion-refresher>-->
 
 
   <div class="custom-tabs">
@@ -24,45 +24,60 @@
     </a>
   </div>
 
-  <div *ngFor="let tab of tabs | keys">
-    <div *ngIf="tabID == tab.key" class="custom-tabs-content dataInfo-about">
 
-      <ion-list class="custom-tabs-content" #oneDataList
-        *ngIf="dataList[tab.key].data != null && dataList[tab.key].data.length > 0">
-        <ion-item-sliding class="oneData-one gvc-{{oneData.MaGVC == userID}} gvp-{{oneData.MaGVP == userID}}"
-          *ngFor="let oneData of dataList[tab.key].data" #slidingItem>
-          <button ion-item (click)="ItiDetail(oneData)">
-            <div class="oneData-one-info">
-              <h3 class="oneData-title">
-                <span class="malh">{{oneData.MaLMH}}</span> {{oneData.TenMH}}
-              </h3>
-              <div class="more-info">
-                <div class="sotinchi">
-                  <ion-icon name="calendar"></ion-icon> Số tín chỉ: {{oneData.SoTinChi}} ({{oneData.TongSoBuoi}} buổi)
-                </div>
-                <div class="gvc">
-                  <ion-icon name="person"></ion-icon> GVC: {{oneData.TenGVC}}
-                </div>
-                <div class="gvp">
-                  <ion-icon name="person"></ion-icon> GVP: {{oneData.TenGVP}}
-                </div>
+  <div *ngIf="tabID == 'sang'" class="custom-tabs-content dataInfo-sang">
 
-                <div class="thu">
-                  <ion-icon name="calendar"></ion-icon> Tiết: {{oneData.TietBD}}
-                  - {{oneData.TietKT}}
-                </div>
-              </div>
+    <ion-grid class="tkb tkb_sang" *ngIf="dataList">
+
+      <!-- title -->
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col *ngFor="let day of daysName | keys">
+          <div>
+            {{day.value}}
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- số tiết -->
+      <ion-row *ngFor="let i of [1,2,3,4,5,6]">
+        <ion-col>Tiết {{i}}</ion-col>
+        <ion-col *ngFor="let day of daysName | keys">
+          <div *ngFor="let oneData of dataList[day.key].data">
+            <div *ngIf="oneData.TietBD <= i && oneData.TietKT >= i">
+              {{oneData.TenMH}}
             </div>
-          </button>
-        </ion-item-sliding>
-      </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-      <ion-list-header
-        *ngIf="dataList[tab.key] == null || dataList[tab.key] == undefined || dataList[tab.key].length <= 0">
-        No data found
-      </ion-list-header>
+  </div>
 
-    </div>
+  <div *ngIf="tabID == 'chieu'" class="custom-tabs-content dataInfo-chieu">
+
+    <ion-grid class="tkb tkb_chieu" *ngIf="dataList">
+
+      <!-- title -->
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col *ngFor="let day of daysName | keys">
+          <div>
+            {{day.value}}
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- số tiết -->
+      <ion-row *ngFor="let i of [7,8,9,10,11,12]">
+        <ion-col>Tiết {{i}}</ion-col>
+        <ion-col *ngFor="let day of daysName | keys">
+          <div *ngFor="let oneData of dataList[day.key].data">
+            <div *ngIf="oneData.TietBD <= i && oneData.TietKT >= i">
+              {{oneData.TenMH}}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
 </ion-content>

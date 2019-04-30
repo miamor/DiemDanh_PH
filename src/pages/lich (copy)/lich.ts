@@ -20,32 +20,24 @@ export class LichPage {
     userID: any;
 
     tabID: string;
-    // tabs = {
-    //     Mon: 'Mon',
-    //     Tue: 'Tue',
-    //     Wed: 'Wed',
-    //     Thu: 'Thu',
-    //     Fri: 'Fri',
-    //     Sat: 'Sat',
-    //     Sun: 'Sun'
-    // };
-    // activated = {
-    //     Mon: 0,
-    //     Tue: 0,
-    //     Wed: 0,
-    //     Thu: 0,
-    //     Fri: 0,
-    //     Sat: 0,
-    //     Sun: 0
-    // };
     tabs = {
-        sang: 'Sáng',
-        chieu: 'Chiều'
-    }
+        Mon: 'Mon',
+        Tue: 'Tue',
+        Wed: 'Wed',
+        Thu: 'Thu',
+        Fri: 'Fri',
+        Sat: 'Sat',
+        Sun: 'Sun'
+    };
     activated = {
-        sang: 0,
-        chieu: 0
-    }
+        Mon: 0,
+        Tue: 0,
+        Wed: 0,
+        Thu: 0,
+        Fri: 0,
+        Sat: 0,
+        Sun: 0
+    };
 
 
     daysName = {
@@ -77,7 +69,6 @@ export class LichPage {
             this.userID = data['MaGV'];
             console.log(this.userID);
             this.updateList(this.userID);
-            this.changeTab('sang')
         });
     }
 
@@ -110,8 +101,7 @@ export class LichPage {
             var d = new Date();
             var dayName = d.toString().split(' ')[0];
             console.log(dayName);
-            
-            // this.changeTab(dayName);
+            this.changeTab(dayName);
         });
     }
 
