@@ -41,9 +41,9 @@ export class AppData {
         })
     }
 
-    listLopMonHocByUserID(): any {
-        console.log(this.userID);
-        return this.http.post('http://localhost/DiemDanh/api/lopmonhoc/list_by_masv.php', {MaSV: this.userID}).map((res: any) => {
+    listLopMonHocByUserID(userID: string): any {
+        console.log(userID);
+        return this.http.post('http://localhost/DiemDanh/api/lopmonhoc/list_by_masv.php', {MaSV: userID}).map((res: any) => {
             let data = res.json();
             //console.log(data);
 
@@ -108,6 +108,15 @@ export class AppData {
 
     loadStat(MaSV: string): any {
         return this.http.post('http://localhost/DiemDanh/api/stat_ph.php', {MaSV: MaSV}).map((res: any) => {
+            let data = res.json();
+            console.log(data);
+
+            return data
+        })
+    }
+
+    listThongBaoByMaSV(MaSV: string): any {
+        return this.http.post('http://localhost/DiemDanh/api/noti_ph.php', {MaSV: MaSV}).map((res: any) => {
             let data = res.json();
             console.log(data);
 

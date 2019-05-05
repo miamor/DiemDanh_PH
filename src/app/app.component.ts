@@ -12,6 +12,7 @@ import { StatPage } from '../pages/stat/stat';
 //import { LopMonHocDetailPage } from '../pages/lopmonhoc-detail/lopmonhoc-detail';
 import { AppData } from '../providers/app-data';
 import { LichPage } from '../pages/lich/lich';
+import { ThongBaoPage } from '../pages/thongbao/thongbao';
 
 export interface PageInterface {
     title: string;
@@ -31,7 +32,8 @@ export interface PageInterface {
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = HomePage;
+    // rootPage: any = HomePage;
+    rootPage: any = LoginPage;
 
     user_info: any = {};
     
@@ -44,7 +46,8 @@ export class MyApp {
     loggedInPages: PageInterface[] = [
         { title: 'Lớp môn học', component: LopMonHocPage },
         { title: 'Lịch học', component: LichPage },
-        { title: 'Thống kê', component: StatPage },
+        // { title: 'Thống kê', component: StatPage },
+        { title: 'Thông báo', component: ThongBaoPage },
         { title: 'Logout', component: HomePage, logsOut: true }
     ];
     loggedOutPages: PageInterface[] = [

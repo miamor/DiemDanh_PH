@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Thông báo
+      <div class="clearfix"></div>
+    </ion-title>
+
+    <!--<button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-toolbar no-border-top>
+            <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateList()" placeholder="Bạn muốn đi đâu?">
+            </ion-searchbar>
+        </ion-toolbar>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentFilter()">
+                <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+            </button>
+        </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="no-scroll">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list class="custom-tabs-content" #oneDataList [hidden]="shownData === 0">
+
+      <button *ngFor="let oneData of noti | keys" ion-item>
+        <div class="oneData-one-info">
+            Sinh viên nghỉ quá 30% số buổi ở lớp <b>{{oneData.value.TenLMH}}</b> (nghỉ {{oneData.value.tongvang}}/{{oneData.value.tongsobuoi}} buổi)
+        </div>
+      </button>
+
+  </ion-list>
+
+
+
+  <ion-list-header [hidden]="shownData > 0">
+    No data found
+  </ion-list-header>
+
+
+</ion-content>

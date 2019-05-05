@@ -20,6 +20,7 @@ import { LopMonHocDetailPage } from '../pages/lopmonhoc-detail/lopmonhoc-detail'
 import { LichHocDetailPage } from '../pages/lichhoc-detail/lichhoc-detail';
 import { LichPage } from '../pages/lich/lich';
 import { StatPage } from '../pages/stat/stat';
+import { ThongBaoPage } from '../pages/thongbao/thongbao';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StatPage } from '../pages/stat/stat';
     LopMonHocPage,
     LopMonHocDetailPage,
     LichHocDetailPage,
-    LichPage
+    LichPage,
+    ThongBaoPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { StatPage } from '../pages/stat/stat';
     LopMonHocPage,
     LopMonHocDetailPage,
     LichHocDetailPage,
-    LichPage
+    LichPage,
+    ThongBaoPage
   ],
   providers: [
     AppData,
