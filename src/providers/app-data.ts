@@ -140,6 +140,7 @@ export class AppData {
         headers.append('Content-Type', 'application/json');
 
         params.type = 'PH';
+        console.log(params)
         return this.http.post('http://localhost/DiemDanh/api/login.php', params).map((res: any) => {
             console.log(res);
             let data = res.json();
