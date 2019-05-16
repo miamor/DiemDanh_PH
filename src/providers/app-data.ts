@@ -52,7 +52,7 @@ export class AppData {
     }
 
     listLopMonHocByUserID_week(userID: string): any {
-        //console.log(userID);
+        console.log(userID);
         return this.http.post('http://localhost/DiemDanh/api/lopmonhoc/list_by_sv_in_week.php', {MaSV: userID}).map((res: any) => {
             let data = res.json();
             console.log(data);

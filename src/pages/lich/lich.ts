@@ -74,7 +74,7 @@ export class LichPage {
         public appData: AppData
     ) {
         this.appData.getUserInfoPromise().then((data) => {
-            this.userID = data['MaGV'];
+            this.userID = data['MaSV'];
             console.log(this.userID);
             this.updateList(this.userID);
             this.changeTab('sang')
@@ -99,8 +99,9 @@ export class LichPage {
         this.dataList && this.dataList.closeSlidingItems();
 
         this.appData.listLopMonHocByUserID_week(userID).subscribe((dataList: any) => {
-            this.dataList = dataList;
             console.log(dataList);
+
+            this.dataList = dataList;
             /*for (var tKey in dataList) {
               this.shownData[tKey] = dataList[tKey].length;
             }*/

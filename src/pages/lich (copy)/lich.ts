@@ -66,7 +66,7 @@ export class LichPage {
         public appData: AppData
     ) {
         this.appData.getUserInfoPromise().then((data) => {
-            this.userID = data['MaGV'];
+            this.userID = data['MaSV'];
             console.log(this.userID);
             this.updateList(this.userID);
         });
