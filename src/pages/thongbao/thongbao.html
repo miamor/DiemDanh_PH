@@ -34,11 +34,11 @@
 
   <ion-list class="custom-tabs-content" #oneDataList [hidden]="shownData === 0">
 
-      <button *ngFor="let oneData of noti | keys" ion-item>
+      <div *ngFor="let oneData of noti | keys" ion-item>
         <div class="oneData-one-info">
             Sinh viên nghỉ quá 30% số buổi ở lớp <b>{{oneData.value.TenLMH}}</b> (nghỉ {{oneData.value.tongvang}}/{{oneData.value.tongsobuoi}} buổi)
         </div>
-      </button>
+      </div>
 
   </ion-list>
 

@@ -18,11 +18,11 @@
   </ion-refresher>
 
 
-  <div class="custom-tabs">
+  <tab class="custom-tabs">
     <a *ngFor="let tab of tabs | keys" (click)="changeTab(tab.key)" class="tab-item {{activated[tab.key]}}">
       {{tab.value}}
     </a>
-  </div>
+  </tab>
 
   <div *ngFor="let tab of tabs | keys">
     <div *ngIf="tabID == tab.key" class="custom-tabs-content dataInfo-about">

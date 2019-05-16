@@ -7,19 +7,18 @@
   </ion-navbar>
 </ion-header>
 
+<div class="custom-tabs">
+  <a *ngFor="let tab of tabs | keys" (click)="changeTab(tab.key)" class="tab-item {{activated[tab.key]}}">
+    {{tab.value}}
+  </a>
+</div>
+
 <ion-content padding>
 
   <div class="dataInfo-detail" *ngIf="dataInfo">
     <!--<div class="dataInfo-basic-info">
       <h1>{{dataInfo.title}}</h1>
     </div>-->
-
-    <div class="custom-tabs">
-      <a *ngFor="let tab of tabs | keys" (click)="changeTab(tab.key)" class="tab-item {{activated[tab.key]}}">
-        {{tab.value}}
-      </a>
-    </div>
-
 
     <div *ngIf="tabID == 'overview'" #overview class="custom-tabs-content dataInfo-overview">
 
@@ -38,7 +37,8 @@
       </div>-->
 
       <div class="dataInfo-overview-one">
-        <ion-icon name="calendar"></ion-icon> Lịch học: {{daysName[dataInfo.Thu]}} (từ tiết {{dataInfo.TietBD}} - {{dataInfo.TietKT}})
+        <ion-icon name="calendar"></ion-icon> Lịch học: {{daysName[dataInfo.Thu]}} (từ tiết {{dataInfo.TietBD}} -
+        {{dataInfo.TietKT}})
       </div>
 
       <div class="dataInfo-overview-one" *ngIf="dataInfo.sv_total > 0">
