@@ -1,7 +1,23 @@
 /*h3.v-box-title{background: color($colors, primary);color:#fff;margin:0 -16px 10px;font-size:18px;padding:8px 16px}
 */
 
+.md {
+  page-lopmonhoc-detail {
+    .custom-tabs {
+      position: fixed !important;
+      z-index: 20;
+      top: 55px !important
+    }
+  }
+}
+
 page-lopmonhoc-detail {
+  .custom-tabs {
+    position: fixed !important;
+    z-index: 20;
+    top: 55px !important
+  }
+
   .scroll-content {
     *background: #fff !important;
     padding: 0 0 16px !important
@@ -61,7 +77,7 @@ page-lopmonhoc-detail {
     position: relative;
     border-left: 2px solid #ddd;
     padding-left: 14px;
-    padding-top:20px;
+    padding-top: 20px;
     /*margin-left:-2px;*/
     margin-bottom: -10px;
     padding-bottom: 20px;
@@ -71,8 +87,8 @@ page-lopmonhoc-detail {
     /*margin-bottom: 0 !important;
     /*color:color($colors, primary)*/
     position: absolute;
-    top:-2px;
-    margin-top:0!important;
+    top: -2px;
+    margin-top: 0 !important;
     color: #aaa;
     font-weight: 600
   }
@@ -96,15 +112,15 @@ page-lopmonhoc-detail {
   .b-box.dadiemdanh_true:before {
     background: #fff;
     font-family: 'Ionicons';
-    font-size:20px;
-    font-weight:600;
+    font-size: 20px;
+    font-weight: 600;
     position: absolute;
     top: 1px;
     left: -10px;
     width: 16px;
     height: 16px;
     border-radius: 100%;
-    line-height:14px
+    line-height: 14px
   }
 
   .b-box.comat_1:before {
@@ -116,6 +132,7 @@ page-lopmonhoc-detail {
     content: '\f360';
     color: rgb(240, 173, 78);
   }
+
   .b-box.comat_-2:before {
     content: '\f360';
     color: rgb(245, 61, 61);
@@ -124,21 +141,27 @@ page-lopmonhoc-detail {
   .b-box.comat_1 {
     border-left-color: rgb(27, 155, 112);
   }
-  .b-box.comat_1 .b-box-title, .b-box.comat_1 .iti-note > b {
+
+  .b-box.comat_1 .b-box-title,
+  .b-box.comat_1 .iti-note>b {
     color: rgb(19, 124, 89);
   }
 
   .b-box.comat_-1 {
     border-left-color: rgb(240, 173, 78);
   }
-  .b-box.comat_-1 .b-box-title, .b-box.comat_-1 .iti-note > b {
+
+  .b-box.comat_-1 .b-box-title,
+  .b-box.comat_-1 .iti-note>b {
     color: rgb(240, 173, 78);
   }
 
   .b-box.comat_-2 {
     border-left-color: rgb(245, 61, 61);
   }
-  .b-box.comat_-2 .b-box-title, .b-box.comat_-2 .iti-note > b {
+
+  .b-box.comat_-2 .b-box-title,
+  .b-box.comat_-2 .iti-note>b {
     color: rgb(245, 61, 61);
   }
 
@@ -151,7 +174,7 @@ page-lopmonhoc-detail {
 
   .dataInfo-lichhoc {
     padding-left: 20px !important;
-    padding-top:20px!important
+    padding-top: 20px !important
   }
 
   .lop-info h3 {
@@ -161,7 +184,7 @@ page-lopmonhoc-detail {
 
   .sv-list {
     padding-left: 25px;
-    margin:5px 0 0!important
+    margin: 5px 0 0 !important
   }
 
   .sv-title {
